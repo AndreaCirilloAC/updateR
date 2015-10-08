@@ -1,9 +1,2 @@
 # updateR : update your R version in a breeze
 
-## scratch
-
-compose url ( get last version using a bit of web scraping)
-download package, set folder for download
-    curl -o 'R-3.2.2.pkg' 'https://cran.rstudio.com/bin/macosx/R-3.2.2.pkg'
-install .pkg file
-    installer -pkg 'R-3.2.2.pkg' -target / -verbose

@@ -1,7 +1,7 @@
 library(rvest)
 library(dplyr)
 library(assertthat)
-
+#first test for on OS
 warning("updateR is available only for OSX operating systems ",
         expr = .Platform$OS.type == "unix",
         call. = FALSE)
@@ -28,4 +28,3 @@ system(command)
 
 message("everything went smoothly")
 message("open a Terminal session and run 'R' to assert that last version was installed")
-

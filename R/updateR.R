@@ -2,6 +2,10 @@ library(rvest)
 library(dplyr)
 library(assertthat)
 
+warning("updateR is available only for OSX operating systems ",
+        expr = .Platform$OS.type == "unix",
+        call. = FALSE)
+stopifnot(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
 

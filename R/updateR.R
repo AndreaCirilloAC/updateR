@@ -31,4 +31,3 @@ message("everything went smoothly")
 message("open a Terminal session and run 'R' to assert that last version was installed")
 }
 
-updateR("!Cesca13")

@@ -1,3 +1,5 @@
+updateR <- function(admin_password = "MAC_admin_password"){
+
 library(rvest)
 library(dplyr)
 library(assertthat)
@@ -24,8 +26,9 @@ command           <- paste("curl -o ", filename_quoted , " '",url,"'", sep = "")
 system(command)
 #install .pkg file
 
-command           <- paste("sudo installer -pkg ", filename_quoted , " -target / -verbose")
+command           <- paste("echo " , admin_password, "| sudo -S installer -pkg ", filename_quoted , " -target / -verbose")
 system(command)
 
 message("everything went smoothly")
 message("open a Terminal session and run 'R' to assert that last version was installed")
+}

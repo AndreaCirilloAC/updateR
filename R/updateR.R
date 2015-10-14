@@ -1,4 +1,4 @@
-updateR <- function(admin_password = "MAC_admin_password"){
+updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ) ){
 
 library(rvest)
 library(dplyr)
@@ -9,7 +9,7 @@ stopifnot(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
 
-page_source       <- read_html("https://cran.rstudio.com/bin/macosx/")
+
 version_block     <- html_nodes(page_source,"table:nth-child(7) tr:nth-child(1) td:nth-child(1)")
 filename          <- html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
 filename          <- filename[[1]]
@@ -20,7 +20,7 @@ stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste('https://cran.rstudio.com/bin/macosx/',filename, sep = "")
 
 #download package, set folder for download
-command           <- paste("curl -o ", filename_quoted , " '",url,"'", sep = "")
+command           <- paste("curl -o -v ", filename_quoted , " '",url,"'", sep = "")
 system(command)
 #install .pkg file
 
@@ -30,4 +30,3 @@ system(command)
 message("everything went smoothly")
 message("open a Terminal session and run 'R' to assert that last version was installed")
 }
-

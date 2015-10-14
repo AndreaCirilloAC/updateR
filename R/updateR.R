@@ -17,7 +17,7 @@ filename          <- filename[[1]] # we take the first element, containing the n
 filename_quoted          <- paste("'",filename,"'",sep = "")
 #everything went right?
 stopifnot(grepl(".pkg",version) == FALSE)
-url               <- paste('https://cran.rstudio.com/bin/macosx/',filename, sep = "")
+url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download
 command           <- paste("curl -o -v ", filename_quoted , " '",url,"'", sep = "")

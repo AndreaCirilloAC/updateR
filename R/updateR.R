@@ -5,18 +5,18 @@ library(dplyr)
 library(assertthat)
 #first test for on OS
 
-stopifnot(.Platform$OS.type == "unix")
+assertthat::stopifnot(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
 
 
-version_block     <- html_nodes(page_source,"table:nth-child(7) tr:nth-child(1) td:nth-child(1)")
-filename          <- html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
+version_block     <- rvest::html_nodes(page_source,"table:nth-child(7) tr:nth-child(1) td:nth-child(1)")
+filename          <- rvest::html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
 filename          <- filename[[1]]
 filename          <- filename[[1]] # we take the first element, containing the name of the file
 filename_quoted          <- paste("'",filename,"'",sep = "")
 #everything went right?
-stopifnot(grepl(".pkg",version) == FALSE)
+assertthat::stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download
@@ -28,5 +28,5 @@ command           <- paste("echo " , admin_password, "| sudo -S installer -pkg "
 system(command)
 
 message("everything went smoothly")
-message("open a Terminal session and run 'R' to assert that last version was installed")
+message("open a Terminal session and run 'R' to assert that latest version was installed")
 }

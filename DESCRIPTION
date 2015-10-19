@@ -5,6 +5,11 @@ Version: 0.1
 Date: 2015-10-08
 Author: Andrea Cirillo
 Maintainer: Andrea Cirillo <andreacirilloac@gmail.com>
-Description: Using updateR is easy to update R version on your OSX device, just running updateR() function.
+Description: Using updateR is easy to update R version on your OSX device,
+    just running updateR() function.
 License: MIT license
 LazyData: TRUE
+Imports:
+    rvest,
+    dplyr,
+    assertthat

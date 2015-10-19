@@ -1,2 +1,1 @@
-# updateR : update your R version in a breeze
-
+# updateR : update your R version in a breeze (from MAC)

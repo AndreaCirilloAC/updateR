@@ -1,4 +1,4 @@
-updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ) ){
+updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ){
 
 library(rvest)
 library(dplyr)

@@ -1,1 +1,3 @@
 # updateR : update your R version in a breeze (from MAC)
+
+find out more on updateR into a dedicated blog post: https://andreacirilloblog.wordpress.com/2015/10/22/updater-package-update-r-version-with-a-function-on-mac-osx/

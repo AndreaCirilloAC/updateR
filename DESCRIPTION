@@ -11,5 +11,4 @@ License: MIT license
 LazyData: TRUE
 Imports:
     rvest,
-    dplyr,
-    assertthat
+    dplyr

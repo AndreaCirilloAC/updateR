@@ -29,6 +29,6 @@ command           <- paste("echo " , admin_password, "| sudo -S installer -pkg "
 system(command)
 
 message("everything went smoothly")
-message("open a Terminal session and run 'R' to assert that latest version was installed")
+message("open a Terminal session and run 'R' to verify that latest version was installed")
 }
 

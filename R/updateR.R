@@ -9,8 +9,8 @@ stopifnot(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
 
-
-version_block     <- rvest::html_nodes(page_source,"table:nth-child(7) tr:nth-child(1) td:nth-child(1)")
+page              <- rvest::read_html(page_source)
+version_block     <- rvest::html_nodes(page,"table:nth-child(7) tr:nth-child(1) td:nth-child(1)")
 filename          <- rvest::html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
 filename          <- filename[[1]]
 filename          <- filename[[1]] # we take the first element, containing the name of the file

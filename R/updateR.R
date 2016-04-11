@@ -1,6 +1,6 @@
 updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ){
   if (!require("pacman")) install.packages("pacman")
-  pacman::p_load(rvest,dplyr)
+  pacman::p_load(rvest,dplyr,assertthat)
 
 #first test for on OS
 stopifnot(.Platform$OS.type == "unix")

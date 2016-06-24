@@ -9,7 +9,7 @@ stopifnot(.Platform$OS.type == "unix")
 page              <- read_html(page_source)
 version_block     <- rvest::html_nodes(page,"h1+ p a+ a , table:nth-child(8) tr:nth-child(1) td > a")
 filename          <- rvest::html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
-filename          <- filename[[2]] # we take the first element, containing the name of the file
+filename          <- filename[[2]] # we take the second element, containing the name of the file
 filename_quoted          <- paste("'",filename,"'",sep = "")
 
 #everything went right?
@@ -17,7 +17,7 @@ stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download
-command           <- paste("curl -o -v ", filename_quoted , " '",url,"'", sep = "")
+command           <- paste("curl -o -v ", filename , " '",url,"'", sep = "")
 system(command)
 
 #install .pkg file

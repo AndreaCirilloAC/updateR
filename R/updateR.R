@@ -17,8 +17,8 @@ stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download
-command           <- paste("curl -o -v ", filename , " '",url,"'", sep = "")
-system(command)
+
+download.file(url,filename)
 
 #install .pkg file
 command           <- paste("echo " , admin_password, "| sudo -S installer -pkg ", filename_quoted , " -target / -verbose")

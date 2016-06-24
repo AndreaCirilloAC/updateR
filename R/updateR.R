@@ -1,7 +1,8 @@
 updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ){
   if (!require("pacman")) install.packages("pacman")
   pacman::p_load(rvest,dplyr,assertthat)
-
+admin_password = "!Cesca12"
+library(rvest)
 #first test for on OS
 stopifnot(.Platform$OS.type == "unix")
 
@@ -17,7 +18,7 @@ stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download
-command           <- paste("curl -o -v ", filename_quoted , " '",url,"'", sep = "")
+command           <- paste("wget -v ", filename_quoted , " '",url,"'", sep = "")
 system(command)
 
 #install .pkg file

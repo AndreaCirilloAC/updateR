@@ -10,5 +10,7 @@ Description: Using updateR is easy to update R version on your OSX device,
 License: MIT license
 LazyData: TRUE
 Imports:
+    dplyr,
     rvest,
-    dplyr
+    pacman,
+

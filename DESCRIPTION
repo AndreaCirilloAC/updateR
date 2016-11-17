@@ -12,5 +12,5 @@ LazyData: TRUE
 Imports:
     dplyr,
     rvest,
-    pacman
-
+    pacman,
+    assertthat,

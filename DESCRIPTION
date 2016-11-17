@@ -13,4 +13,4 @@ Imports:
     dplyr,
     rvest,
     pacman,
-    assertthat,
+    assertthat

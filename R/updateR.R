@@ -1,19 +1,18 @@
 updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com/bin/macosx/" ){
-  if (!require("pacman")) install.packages("pacman")
-  pacman::p_load(rvest,dplyr,assertthat)
 
+library(dplyr)
 #first test for on OS
-stopifnot(.Platform$OS.type == "unix")
+assertthat::stopifnot(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
-page              <- read_html(page_source)
+page              <- rvest::read_html(page_source)
 version_block     <- rvest::html_nodes(page,"h1+ p a+ a , table:nth-child(8) tr:nth-child(1) td > a")
 filename          <- rvest::html_text(version_block) %>% strsplit("\n", fixed = TRUE) # the resulting value is a list
 filename          <- filename[[2]] # we take the second element, containing the name of the file
 filename_quoted          <- paste("'",filename,"'",sep = "")
 
 #everything went right?
-stopifnot(grepl(".pkg",version) == FALSE)
+assertthat::stopifnot(grepl(".pkg",version) == FALSE)
 url               <- paste(page_source,filename, sep = "")
 
 #download package, set folder for download

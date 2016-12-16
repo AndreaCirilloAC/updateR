@@ -2,7 +2,7 @@ updateR <- function(admin_password = "", page_source = "https://cran.rstudio.com
 
 library(dplyr)
 #first test for on OS
-assertthat::stopifnot(.Platform$OS.type == "unix")
+(.Platform$OS.type == "unix")
 
 #we scrape CRAN page to retrieve the last R version and compose dowloading URL
 page              <- rvest::read_html(page_source)

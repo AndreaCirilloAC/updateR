@@ -27,7 +27,7 @@ updateR <- function(admin_password = NULL,
   #install .pkg file
   command <- paste("echo ", admin_password, "| sudo -S installer -pkg ", 
                  filename_quoted, " -target / -verbose")
-  system2(command, stdout = NULL, stderr = NULL)
+  system(command)
   
   x <- system2("R", args= "--version", stdout = TRUE)
   x <- x[1]

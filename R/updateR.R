@@ -6,7 +6,7 @@ updateR <- function(admin_password = NULL,
   stopifnot(.Platform$OS.type == "unix")
   # test for password
   if(is.null(admin_password)){
-    return(message("Error: User system password is missing"))
+    stop("User system password is missing"))
     }
   
   # we scrape CRAN page to retrieve the last R version and compose dowloading URL
@@ -33,6 +33,6 @@ updateR <- function(admin_password = NULL,
   x <- x[1]
   message(paste0("R was updated to ", x))
   # congratulate with the reader
-  message("Everything went smoothly!")
+  message("Everything went smoothly")
 }
 

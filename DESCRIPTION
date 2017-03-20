@@ -1,12 +1,12 @@
 Package: updateR
 Type: Package
-Title: update R version in a function (OSX devices)
+Title: update R version in an R function (OSX devices)
 Version: 0.1
 Date: 2015-10-08
-Author: Andrea Cirillo
+Author: Andrea Cirillo, Robert Myles McDonnell
 Maintainer: Andrea Cirillo <andreacirilloac@gmail.com>
-Description: Using updateR is easy to update R version on your OSX device,
-    just running updateR() function.
+Description: Using updateR makes it easy to update R on your OSX device,
+    just by running the updateR() function.
 License: MIT license
 LazyData: TRUE
 Imports:
@@ -15,3 +15,4 @@ Imports:
     pacman,
     assertthat,
     xml2
+RoxygenNote: 6.0.1

@@ -47,5 +47,6 @@ updateR <- function(admin_password = NULL){
   x <- x[1]
 
   message(paste0("Everything went smoothly, R was updated to ", x))
+
 }
 

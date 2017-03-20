@@ -1,6 +1,6 @@
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_nodes
-#' @importFrom rvest html_text(
+#' @importFrom rvest html_text
 #' @importFrom magrittr '%>%'
 #' @title Downloads and installs the latest version of R for Mac OS X.
 #' @param admin_password \code{character}. The system-wide password of the user.
@@ -31,12 +31,12 @@ updateR <- function(admin_password = NULL){
   download.file(url, file)
 
   #install .pkg file
+  pkg <- gsub("\\.pkg" , "", file)
+  message(paste0("Installing ", pkg, "...please wait"))
   command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
                 "'", file, "'", " -target /")
   system(command, ignore.stdout = TRUE, ignore.stderr = TRUE)
 
-  pkg <- gsub("\\.pkg" , "", file)
-  message(paste0("Installing ", pkg, "...please wait"))
 
   arg <- paste0("--check-signature ", file)
   system2("pkgutil", arg)

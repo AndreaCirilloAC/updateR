@@ -2,6 +2,6 @@
 
 export(updateR)
 importFrom(magrittr,'%>%')
-importFrom(rvest,"html_text(")
 importFrom(rvest,html_nodes)
+importFrom(rvest,html_text)
 importFrom(xml2,read_html)

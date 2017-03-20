@@ -17,8 +17,6 @@ updateR <- function(admin_password = NULL){
     stop("User system password is missing")
   }
 
-  suppressMessages(library(dplyr))
-
   page_source = "https://cran.rstudio.com/bin/macosx/"
 
   file <- xml2::read_html(page_source) %>%

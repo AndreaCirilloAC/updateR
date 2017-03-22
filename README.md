@@ -1,5 +1,5 @@
 
-updateR : update your R version in a breeze (from MAC)
+updateR : update your R version in a breeze (on a Mac)
 ======================================================
 
 ### Installation
@@ -14,7 +14,7 @@ devtools::install_github("AndreaCirilloAC/updateR")
 
 ### Usage
 
-To update R, run `updateR(admin_password = <PASSWORD>)` with your system password. The function will display the version that R has been updated to when it finishes. To finish the process, please restart R. In RStudio, this can be done by clicking on **Session &gt; Restart R**.
+To update R, run `updateR(admin_password = <PASSWORD>)` with your system password. The function will display the version that R has been updated to when it finishes.
 
 ### More information
 

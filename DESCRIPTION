@@ -14,5 +14,6 @@ Imports:
     rvest,
     pacman,
     assertthat,
-    xml2
+    xml2,
+    magrittr
 RoxygenNote: 6.0.1

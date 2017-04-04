@@ -4,7 +4,7 @@
 #' @importFrom utils download.file
 #' @title Downloads and installs the latest version of R for Mac OS X.
 #' @description Update your version of R from inside R itself (Mac OS X only).
-#' @param admin_password \code{character}. The system-wide password of the user.\n The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.
+#' @param admin_password \code{character}. The system-wide password of the user. The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.
 #' @author Andrea Cirillo, Robert Myles McDonnell
 #' @examples
 #' updateR(admin_password = "****")

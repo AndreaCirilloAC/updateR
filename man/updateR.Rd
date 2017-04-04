@@ -7,7 +7,7 @@
 updateR(admin_password = NULL)
 }
 \arguments{
-\item{admin_password}{\code{character}. The system-wide password of the user.}
+\item{admin_password}{\code{character}. The system-wide password of the user.\n The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.}
 }
 \description{
 Update your version of R from inside R itself (Mac OS X only).

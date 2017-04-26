@@ -2,6 +2,7 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_text
 #' @importFrom utils download.file
+#' @importFrom stringr str_extract_all
 #' @title Downloads and installs the latest version of R for Mac OS X.
 #' @description Update your version of R from inside R itself (Mac OS X only).
 #' @param admin_password \code{character}. The system-wide password of the user.
@@ -20,10 +21,18 @@ updateR <- function(admin_password = NULL){
 
   page_source = "https://cran.rstudio.com/bin/macosx/"
 
+  css <- "body > table"
+
   file <- xml2::read_html(page_source) %>%
-    rvest::html_nodes("h1+ p a+ a , table:nth-child(8) tr:nth-child(1) td > a") %>%
-    rvest::html_text() %>% strsplit("\n", fixed = TRUE) %>%
-    .[[2]]
+    rvest::html_nodes(css) %>%
+    rvest::html_text() %>%
+    stringr::str_extract_all(pattern = "^[:print:]*\\.pkg") %>%
+    .[[1]]
+
+  # file <- xml2::read_html(page_source) %>%
+  #   rvest::html_nodes("h1+ p a+ a , table:nth-child(8) tr:nth-child(1) td > a") %>%
+  #   rvest::html_text() %>% strsplit("\n", fixed = TRUE) %>%
+  #   .[[2]]
 
   stopifnot(grepl(".pkg", file) == TRUE)
   url <- paste0(page_source, file)

@@ -29,10 +29,6 @@ updateR <- function(admin_password = NULL){
     stringr::str_extract_all(pattern = "^[:print:]*\\.pkg") %>%
     .[[1]]
 
-  # file <- xml2::read_html(page_source) %>%
-  #   rvest::html_nodes("h1+ p a+ a , table:nth-child(8) tr:nth-child(1) td > a") %>%
-  #   rvest::html_text() %>% strsplit("\n", fixed = TRUE) %>%
-  #   .[[2]]
 
   stopifnot(grepl(".pkg", file) == TRUE)
   url <- paste0(page_source, file)

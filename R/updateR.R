@@ -41,7 +41,7 @@ updateR <- function(admin_password = NULL){
   message(paste0("Installing ", pkg, "...please wait"))
   command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
                 "'", file, "'", " -target /")
-  system(command, ignore.stdout = TRUE, ignore.stderr = TRUE)
+  system(command, ignore.stdout = TRUE)
 
   arg <- paste0("--check-signature ", file)
   system2("pkgutil", arg)

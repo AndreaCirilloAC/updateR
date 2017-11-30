@@ -12,6 +12,8 @@
 #' @export
 updateR <- function(admin_password = NULL){
 
+  admin_password = "!Cesca13"
+
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
   # test for password
@@ -39,8 +41,8 @@ updateR <- function(admin_password = NULL){
   #install .pkg file
   pkg <- gsub("\\.pkg" , "", file)
   message(paste0("Installing ", pkg, "...please wait"))
-  command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
-                "'", file, "'", " -target /")
+  command <- paste0("echo ", paste("'",admin_password,"'",sep = ""), " | sudo -S installer -pkg ",
+                "'", file, "'", " -target/")
   system(command, ignore.stdout = TRUE, ignore.stderr = TRUE)
 
   arg <- paste0("--check-signature ", file)

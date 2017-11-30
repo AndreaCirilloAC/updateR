@@ -21,6 +21,12 @@ updateR <- function(admin_password = NULL){
     stop("User system password is missing")
   }
 
+  installed.packages() %>%
+  as.data.frame() %>%
+  select(Package) %>%
+  as.vector()-> needed_packages # saving packages installed before updating R version
+  needed_packages <- paste(unlist(needed_packages))
+
   page_source = "https://cran.rstudio.com/bin/macosx/"
 
   css <- "body > table"
@@ -41,13 +47,18 @@ updateR <- function(admin_password = NULL){
   #install .pkg file
   pkg <- gsub("\\.pkg" , "", file)
   message(paste0("Installing ", pkg, "...please wait"))
-  command <- paste0("echo ", paste("'",admin_password,"'",sep = ""), " | sudo -S installer -pkg ",
-                "'", file, "'", " -target/")
-  system(command, ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+  command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
+                "'", file, "'", " -target /")
+  system(command, ignore.stdout = TRUE)
 
   arg <- paste0("--check-signature ", file)
   system2("pkgutil", arg)
 
+  # install back the packages saved at the beginning of the process
+  install.packages(as.vector(needed_packages))
+
+  # store version of R
   x <- system2("R", args = "--version", stdout = TRUE)
   x <- x[1]
 

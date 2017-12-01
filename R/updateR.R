@@ -10,7 +10,7 @@
 #' @examples
 #' updateR(admin_password = "****")
 #' @export
-updateR <- function(admin_password = NULL, file = NULL){
+updateR <- function(admin_password = NULL, file = NA){
 
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")

@@ -10,9 +10,7 @@
 #' @examples
 #' updateR(admin_password = "****")
 #' @export
-updateR <- function(admin_password = NULL){
-
-  admin_password = "!Cesca13"
+updateR <- function(admin_password = NULL, file = NULL){
 
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
@@ -30,13 +28,13 @@ updateR <- function(admin_password = NULL){
   page_source = "https://cran.rstudio.com/bin/macosx/"
 
   css <- "body > table"
-
+if (is.na(file)){
   file <- xml2::read_html(page_source) %>%
     rvest::html_nodes(css) %>%
     rvest::html_text() %>%
     stringr::str_extract_all(pattern = "^[:print:]*\\.pkg") %>%
     .[[1]]
-
+}
 
   stopifnot(grepl(".pkg", file) == TRUE)
   url <- paste0(page_source, file)

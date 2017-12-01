@@ -15,14 +15,14 @@ updateR <- function(admin_password = NULL, file = NA){
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
   # test for password
-  if(is.null(admin_password)){
+  if ( is.null(admin_password)){
     stop("User system password is missing")
   }
 
   installed.packages() %>%
   as.data.frame() %>%
   select(Package) %>%
-  as.vector()-> needed_packages # saving packages installed before updating R version
+  as.vector() -> needed_packages # saving packages installed before updating R version
   needed_packages <- paste(unlist(needed_packages))
 
   page_source = "https://cran.rstudio.com/bin/macosx/"
@@ -61,6 +61,6 @@ if (is.na(file)){
   x <- x[1]
 
   message(paste0("Everything went smoothly, R was updated to ", x))
-
+  message(paste0("Also the packages installed on your previous version of R were installed back"))
 }
 

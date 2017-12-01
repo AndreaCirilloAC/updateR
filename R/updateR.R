@@ -61,6 +61,6 @@ if (is.na(file)){
   x <- x[1]
 
   message(paste0("Everything went smoothly, R was updated to ", x))
-  message(paste0("Also the packages installed on your previous version of R were installed back"))
+  message(paste0("Also the packages installed on your previous version of R were restored"))
 }
 

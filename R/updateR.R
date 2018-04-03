@@ -39,18 +39,20 @@ if (is.na(file)){
   stopifnot(grepl(".pkg", file) == TRUE)
   url <- paste0(page_source, file)
 
+  destpath <- paste(getwd(),"/",sep = "")
+  fullpath <- paste(destpath,file,sep = "")
   # download package, set folder for download
-  download.file(url, file)
+  download.file(url, fullpath)
 
   #install .pkg file
   pkg <- gsub("\\.pkg" , "", file)
   message(paste0("Installing ", pkg, "...please wait"))
 
   command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
-                "'", file, "'", " -target /")
+                "'", fullpath, "'", " -target /")
   system(command, ignore.stdout = TRUE)
 
-  arg <- paste0("--check-signature ", file)
+  arg <- paste0("--check-signature ", fullpath)
   system2("pkgutil", arg)
 
   # install back the packages saved at the beginning of the process

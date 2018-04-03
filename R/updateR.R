@@ -24,6 +24,7 @@ updateR <- function(admin_password = NULL, file = NA){
   select(Package) %>%
   as.vector() -> needed_packages # saving packages installed before updating R version
   needed_packages <- paste(unlist(needed_packages))
+  save(needed_packages, file = "needed_packages.RData")
 
   page_source = "https://cran.rstudio.com/bin/macosx/"
 
@@ -56,6 +57,7 @@ if (is.na(file)){
   system2("pkgutil", arg)
 
   # install back the packages saved at the beginning of the process
+  load("needed_packages.RData")
   install.packages(as.vector(needed_packages))
 
   # store version of R

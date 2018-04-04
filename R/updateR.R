@@ -38,6 +38,14 @@ if (is.na(file)){
 }
 
   stopifnot(grepl(".pkg", file) == TRUE)
+
+  latestVersion <- as.numeric(paste(stringr::str_extract_all(pattern = "[:digit:]{1}",file)[[1]],collapse=""))
+  installedVersion <- as.numeric(paste(stringr::str_extract_all(pattern = "[:digit:]{1}",paste(version$major,version$minor))[[1]],collapse=""))
+  if (installedVersion >= latestVersion) {
+    message(paste("Update not necessary. Latest version ====",version$version.string,"==== already installed."))
+    return()
+  }
+
   url <- paste0(page_source, file)
 
   destpath <- paste(getwd(),"/",sep = "")

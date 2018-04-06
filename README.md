@@ -22,4 +22,4 @@ No compatibility check is currently performed between your OS and the installed 
 
 ### More information
 
-To find out more on updateR, see the dedicated blog post: http://www.andreacirillo.com/2015/10/22/updater-package-update-r-version-with-a-function-on-mac-osx/
+To find out more on updateR, see the dedicated blog post: http://www.andreacirillo.com/2018/02/10/updater-package-update-r-version-with-a-function-on-mac-osx/

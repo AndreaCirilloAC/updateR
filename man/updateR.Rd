@@ -4,7 +4,7 @@
 \alias{updateR}
 \title{Downloads and installs the latest version of R for Mac OS X.}
 \usage{
-updateR(admin_password = NULL)
+updateR(admin_password = NULL, file = NA)
 }
 \arguments{
 \item{admin_password}{\code{character}. The system-wide password of the user. The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.}

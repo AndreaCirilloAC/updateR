@@ -65,7 +65,9 @@ if (is.na(file)){
   system2("pkgutil", arg)
 
   # install back the packages saved at the beginning of the process
-  load("/tmp/needed_packages.RData")
+  load("/tmp/needed_packages.RData", verbose = TRUE)
+  message("list of packages loaded")
+  needed_packages
   install.packages(as.vector(needed_packages))
 
   # store version of R

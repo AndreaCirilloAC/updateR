@@ -1,6 +1,9 @@
 
 updateR : update your R version in a breeze (on a Mac)
 ======================================================
+### NEWS: 
+**previously installed package retrieval feature is in beta mode and you may need to manually install back your packages after upgrading R version.**
+Thanks God they are free :)
 
 ### Installation
 

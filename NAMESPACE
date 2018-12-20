@@ -2,7 +2,7 @@
 
 export("%>%")
 export(updateR)
-importFrom(dplyr,select)
+importFrom(getPass,getPass)
 importFrom(magrittr,"%>%")
 importFrom(rvest,html_nodes)
 importFrom(rvest,html_text)

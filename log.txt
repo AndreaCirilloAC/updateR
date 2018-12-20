@@ -1,0 +1,9 @@
+Version 0.2:
+
+The installation of packages is improved and simplified, inspiered by the post on https://www.r-bloggers.com/upgrade-r-without-losing-your-packages/ Bioconductor packages are now also installed by default
+
+The admin password is now masked upon entry in terminal and RStudio. Limitation: The package now only works in interactive mode
+
+Many of the dependencies are moved from depends to imports in DESCRIPTION
+
+Any accidential attempt to use the package on Linux is now blocked

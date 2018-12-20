@@ -4,16 +4,18 @@
 \alias{updateR}
 \title{Downloads and installs the latest version of R for Mac OS X.}
 \usage{
-updateR(admin_password = NULL, file = NA)
+updateR(file = NA)
 }
 \arguments{
+\item{file}{The name of the pkg file from which R is installed (only advanced users should use this)}
+
 \item{admin_password}{\code{character}. The system-wide password of the user. The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.}
 }
 \description{
-Update your version of R from inside R itself (Mac OS X only).
+Update your version of R from inside R itself (Mac OS X only). Only works in interactive mode
 }
 \examples{
-updateR(admin_password = "****")
+updateR()
 }
 \author{
 Andrea Cirillo, Robert Myles McDonnell

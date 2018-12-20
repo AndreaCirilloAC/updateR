@@ -3,28 +3,32 @@
 #' @importFrom rvest html_text
 #' @importFrom utils download.file
 #' @importFrom stringr str_extract_all
-#' @importFrom dplyr select
+#' @importFrom getPass getPass
 #' @title Downloads and installs the latest version of R for Mac OS X.
-#' @description Update your version of R from inside R itself (Mac OS X only).
+#' @description Update your version of R from inside R itself (Mac OS X only). Only works in interactive mode
 #' @param admin_password \code{character}. The system-wide password of the user. The parameter will be only employed to execute commands gaining administrator privileges on the computer and will not be stored anywhere.
+#' @param file The name of the pkg file from which R is installed (only advanced users should use this)
 #' @author Andrea Cirillo, Robert Myles McDonnell
 #' @examples
-#' updateR(admin_password = "****")
+#' updateR()
 #' @export
-updateR <- function(admin_password = NULL, file = NA){
+updateR <- function(file = NA){
 
   # first test for on OS
+  # Excludes Windows
   stopifnot(.Platform$OS.type == "unix")
-  # test for password
-  if ( is.null(admin_password)){
-    stop("User system password is missing")
-  }
+  # Excludes Linux
+  stopifnot(system('uname',intern=TRUE)=='Darwin')
+  # and then whether we run in interactive mode
+  stopifnot(interactive())
 
-  installed.packages() %>%
-  as.data.frame() %>%
-  select(Package) %>%
-  as.vector() -> needed_packages # saving packages installed before updating R version
-  needed_packages <- paste(unlist(needed_packages))
+  # Ask for password (the input is hidden)
+  admin_password=getPass(msg='Enter admin password')
+  tmp <- installed.packages()
+  # The base and recommended packages are installed by default anyway,
+  # so we only need to bother installing the ones without any assigned
+  # priority
+  needed_packages <- as.vector(tmp[is.na(tmp[,"Priority"]), 1])
   save(needed_packages, file = "/tmp/needed_packages.RData")
 
   page_source = "https://cran.rstudio.com/bin/macosx/"
@@ -69,7 +73,13 @@ if (is.na(file)){
   load("/tmp/needed_packages.RData", verbose = TRUE)
   message("list of packages loaded")
   needed_packages
-  install.packages(as.vector(needed_packages))
+  tmp <- installed.packages()
+  current_packages <- as.vector(tmp[is.na(tmp[,"Priority"]), 1])
+  missing <- setdiff(needed_packages, current_packages)
+  if (!requireNamespace("BiocManager"))
+    install.packages("BiocManager")
+  BiocManager::install(missing)
+  BiocManager::update.packages()
 
   # store version of R
   x <- system2("R", args = "--version", stdout = TRUE)

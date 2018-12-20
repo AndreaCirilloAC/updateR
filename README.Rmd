@@ -12,15 +12,15 @@ output: github_document
 
 install.packages("devtools")
 
-devtools::install_github("AndreaCirilloAC/updateR")
+devtools::install_github("yaccos/updateR")
 
 ```
 
 
 ### Usage
 
-To update R, run `updateR(admin_password = <PASSWORD>)` with your system password. The function will display the version that R has been updated to when it finishes. 
-**previously installed packages will be installed back ( this may require time)**
+To update R, run `updateR()` with your system password. The function will display the version that R has been updated to when it finishes. 
+**previously installed packages will be installed back from CRAN and Bioconductor, ( this may require time)**
 
 ### More information
 

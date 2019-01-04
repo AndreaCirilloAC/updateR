@@ -13,8 +13,7 @@ LazyData: TRUE
 Depends:R (>= 3.2.3),
     dplyr,
     rvest,
-    pacman,
-    assertthat,
     xml2,
+    stringr,
     magrittr
 RoxygenNote: 6.0.1

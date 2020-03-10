@@ -58,7 +58,7 @@ if (is.na(file)){
   pkg <- gsub("\\.pkg" , "", file)
   message(paste0("Installing ", pkg, "...please wait"))
 
-  command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
+  command <- paste0("echo '", admin_password, "' | sudo -S installer -pkg ",
                 "'", fullpath, "'", " -target /")
   system(command, ignore.stdout = TRUE)
 

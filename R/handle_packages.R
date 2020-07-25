@@ -1,8 +1,4 @@
 #' @noRd
-
-utils::globalVariables(c("Package", "Priority", "installing"))
-
-#' @noRd
 list_packages <- function() {
   all_pkg <- installed.packages() %>%
     as.data.frame() %>%

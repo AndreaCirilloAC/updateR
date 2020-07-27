@@ -8,12 +8,12 @@ Author: Andrea Cirillo, Robert Myles McDonnell
 Maintainer: Andrea Cirillo <andreacirilloac@gmail.com>
 Description: Using updateR makes it easy to update R on your OSX device,
     just by running the updateR() function.
-License: MIT license
+License: MIT + file LICENSE
 LazyData: TRUE
-Depends:R (>= 3.2.3),
+Depends: 
+    R (>= 3.2.3),
     dplyr,
     rvest,
     xml2,
-    stringr,
     magrittr
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1

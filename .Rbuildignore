@@ -3,3 +3,4 @@
 ^.*\README$
 ^.*\.git$
 ^.*\.gitignore$
+^LICENSE\.md$

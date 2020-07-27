@@ -15,9 +15,19 @@ updateR <- function(admin_password = NULL, file = NA){
 
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
+
   # test for password
   if ( is.null(admin_password)){
     stop("User system password is missing")
+  }
+
+  # check if user can run sudo
+  username <- system('whoami', intern = TRUE)
+  command <- paste0("echo '", admin_password, "' | sudo -S -l")
+  out <- system(command, intern = TRUE)
+
+  if (length(out) == 0){
+    stop(sprintf("current user %s does not have admin privileges", username))
   }
 
   installed.packages() %>%
@@ -58,7 +68,7 @@ if (is.na(file)){
   pkg <- gsub("\\.pkg" , "", file)
   message(paste0("Installing ", pkg, "...please wait"))
 
-  command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
+  command <- paste0("echo '", admin_password, "' | sudo -S installer -pkg ",
                 "'", fullpath, "'", " -target /")
   system(command, ignore.stdout = TRUE)
 

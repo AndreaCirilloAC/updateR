@@ -61,6 +61,7 @@ package_exists <- function(status = latest_r_version()) {
         pkg_name %in% list.files(download.path)
 }
 
+#' @noRd
 check_auto <- function(r_prof = NULL) {
         filenames <- list.files("~/", all.files = TRUE)
         exists_rprofile <- ".Rprofile" %in% filenames

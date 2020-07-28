@@ -1,7 +1,7 @@
 Package: updateR
 Type: Package
 Title: update R version in an R function (OSX devices)
-Version: 0.2.9000
+Version: 0.2.0.9000
 Date: 2015-10-08
 OS_type: unix
 Author: Andrea Cirillo, Robert Myles McDonnell

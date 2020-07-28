@@ -18,7 +18,11 @@ devtools::install_github("AndreaCirilloAC/updateR")
 
 ### Usage
 
-To update R, simply run `updateR()`, ~~where "PASSWORD" stands for your system password~~ You will be asked to enter the admin password in the process. The function will display the version that R has been updated to when it finishes.
+To update R, simply run `updateR()`, You will be asked to enter the admin password in the process. The function will display the version that R has been updated to when it finishes.
+
+### Automation
+
+`updateR(auto = TRUE, .Rprofile = NULL)` automatically checks for update in each R session via `~/.Rprofile`. If you already have your own `.Rprofile`, change `.Rprofile` argument to `/path/to/.Rprofile`. You could simply turn it off by setting `auto` to FALSE.
 
 ### Password
 

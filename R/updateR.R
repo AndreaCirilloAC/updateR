@@ -13,16 +13,19 @@
 #' ## END NOT RUN
 #' }
 #' @export
-updateR <- function(){
+updateR <- function(auto = TRUE, .Rprofile = NULL){
 
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
+
+  # check updates upon the start of a R session
+  if(auto) check_auto(r_prof = .Rprofile)
 
   latest <- latest_r_version()
   if(!latest$update_avail) {
     message(paste("Update not necessary. Latest version ====",
                   version$version.string, "==== already installed."))
-    return()
+    return(invisible())
   }
   check_compactability(status = latest)
   installing <- list_packages()

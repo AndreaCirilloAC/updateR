@@ -18,8 +18,33 @@ updateR <- function(auto = TRUE, .Rprofile = NULL){
   # first test for on OS
   stopifnot(.Platform$OS.type == "unix")
 
+<<<<<<< HEAD
   # check updates upon the start of a R session
   if(auto) check_auto(r_prof = .Rprofile)
+=======
+
+  # test for password
+  if ( is.null(admin_password)){
+    stop("User system password is missing")
+  }
+
+  # check if user can run sudo
+  username <- system('whoami', intern = TRUE)
+  command <- paste0("echo '", admin_password, "' | sudo -S -l")
+  out <- system(command, intern = TRUE)
+
+  if (length(out) == 0){
+    stop(sprintf("current user %s does not have admin privileges", username))
+  }
+
+  installed.packages() %>%
+  as.data.frame() %>%
+  select(Package) %>%
+  as.vector() -> needed_packages # saving packages installed before updating R version
+  needed_packages <- paste(unlist(needed_packages))
+  save(needed_packages, file = "/tmp/needed_packages.RData")
+
+>>>>>>> 30e7beaa6b42829a701499406056b6c2c9122a1f
 
   latest <- latest_r_version()
   if(!latest$update_avail) {
@@ -42,7 +67,7 @@ updateR <- function(auto = TRUE, .Rprofile = NULL){
   admin_password <- ask_password()
   message(paste0("Installing R-", latest$latest, "...please wait"))
 
-  command <- paste0("echo ", admin_password, " | sudo -S installer -pkg ",
+  command <- paste0("echo '", admin_password, "' | sudo -S installer -pkg ",
                 "'", fullpath, "'", " -target /")
   system(command, ignore.stdout = TRUE)
 

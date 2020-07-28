@@ -10,10 +10,11 @@ Description: Using updateR makes it easy to update R on your OSX device,
     just by running the updateR() function.
 License: MIT + file LICENSE
 LazyData: TRUE
-Depends: 
-    R (>= 3.2.3),
+Imports: 
     dplyr,
     rvest,
     xml2,
     magrittr
+Depends:
+    R (>= 3.2.3)
 RoxygenNote: 7.1.1

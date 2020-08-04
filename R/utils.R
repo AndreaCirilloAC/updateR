@@ -60,3 +60,26 @@ package_exists <- function(status = latest_r_version()) {
                                  system2("whoami", stdout = TRUE))
         pkg_name %in% list.files(download.path)
 }
+
+#' @noRd
+check_auto <- function(r_prof = NULL) {
+        filenames <- list.files("~/", all.files = TRUE)
+        exists_rprofile <- ".Rprofile" %in% filenames
+        conn <- ifelse(is.null(r_prof), "~/.Rprofile", r_prof)
+        if(!exists_rprofile) {
+                file.create(conn)
+                message("Created ~/.Rprofile")
+        } else {
+                rprofile <- readLines(conn)
+                exists_line <- grepl("(library\\(updateR\\))", rprofile)
+                if(exists_line) {
+                        rprofile[which(exists_line)] <- ""
+                        rprofile[which(exists_line)] <- "library(updateR)\n"
+                        writeLines(rprofile, conn)
+                } else {
+                        append("library(updateR)\n", rprofile)
+                        writeLines(rprofile, conn)
+                }
+                message("Updated ~/.Rprofile")
+        }
+}

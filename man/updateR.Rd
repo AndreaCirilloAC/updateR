@@ -4,10 +4,22 @@
 \alias{updateR}
 \title{Downloads and installs the latest version of R for Mac OS X.}
 \usage{
-updateR()
+updateR(auto = TRUE, .Rprofile = NULL)
+}
+\arguments{
+\item{auto}{Do you want to check for new updates upon firing an R session?}
+
+\item{.Rprofile}{the path for .Rprofile if it exists in other than
+\code{~/.Rprofile}}
 }
 \description{
 Update your version of R from inside R itself (Mac OS X only).
+}
+\details{
+Automatic update checks are implemented via creating or updating
+  \code{.Rprofile} file. Every time when \code{updateR} is loaded in R,
+  it will check whether new updates are available. A message will be
+  prompted to user if positive.
 }
 \examples{
 \dontrun{

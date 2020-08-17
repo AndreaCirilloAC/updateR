@@ -12,7 +12,7 @@
 #'   \code{.Rprofile} file. Every time when \code{updateR} is loaded in R,
 #'   it will check whether new updates are available. A message will be
 #'   prompted to user if positive.
-#' @author Andrea Cirillo, Robert Myles McDonnell
+#' @author Andrea Cirillo, Robert Myles McDonnell, Chuck Leong
 #' @examples
 #' \dontrun{
 #' ## NOT RUN

@@ -5,6 +5,7 @@ Version: 0.2.0.9000
 Date: 2015-10-08
 OS_type: unix
 Author: Andrea Cirillo, Robert Myles McDonnell
+Contributor: Chuck Leong
 Maintainer: Andrea Cirillo <andreacirilloac@gmail.com>
 Description: Using updateR makes it easy to update R on your OSX device,
     just by running the updateR() function.

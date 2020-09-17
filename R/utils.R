@@ -71,7 +71,7 @@ check_auto <- function(r_prof = NULL) {
                 message("Created ~/.Rprofile")
         } else {
                 rprofile <- readLines(conn)
-                exists_line <- grepl("(library\\(updateR\\))", rprofile)
+                exists_line <- any(grepl("(library\\(updateR\\))", rprofile))
                 if(exists_line) {
                         rprofile[which(exists_line)] <- ""
                         rprofile[which(exists_line)] <- "library(updateR)\n"

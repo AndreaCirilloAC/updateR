@@ -25,13 +25,9 @@ updateR <- function(auto = TRUE, .Rprofile = NULL) {
   stopifnot(.Platform$OS.type == "unix")
 
   # check updates upon the start of a R session
+  admin_password <- ask_password()
   if(auto)
     check_auto(r_prof = .Rprofile)
-
-    # test for password
-    if (is.null(admin_password)) {
-      stop("User system password is missing")
-    }
 
   # check if user can run sudo
   username <- system('whoami', intern = TRUE)
@@ -53,7 +49,7 @@ updateR <- function(auto = TRUE, .Rprofile = NULL) {
   if (!latest$update_avail) {
     message(
       paste(
-        "Update not necessary. Latest version ====",
+        "Update not necessary.\n Latest version ====",
         version$version.string,
         "==== already installed."
       )
@@ -72,7 +68,6 @@ updateR <- function(auto = TRUE, .Rprofile = NULL) {
     download.file(latest$url, fullpath)
 
   #install .pkg file
-  admin_password <- ask_password()
   message(paste0("Installing R-", latest$latest, "...please wait"))
 
   command <-

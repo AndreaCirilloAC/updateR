@@ -44,6 +44,12 @@ check_compactability <- function(status = latest_r_version()) {
                 regmatches(., regexpr("(\\d+)\\.(\\d+)\\.(\\d+)$", .)) %>%
                 sub("^(.+\\.(.+)?)\\..+", "\\1", x = .) %>%
                 as.numeric()
+        if (length(macOS) == 0) {
+        macOS <- sessionInfo()$running %>%
+                regmatches(., regexpr("(\\d+)\\.(\\d+)$", .)) %>%
+                sub("^(.+\\.(.+)?)\\..+", "\\1", x = .) %>%
+                as.numeric()
+        }
 
         if(isTRUE(status$update_avail) && ver_major_minor >= 40) {
                 compactible <- macOS >= attr(status, "OS_minimal")

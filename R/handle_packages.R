@@ -34,7 +34,7 @@ restore_packages <- function(status = latest_r_version()) {
                              collapse = "\n"),
                            "patch" = paste(
                              c("Restoring packages is NOT necessary.",
-                               "Press [Enter] to continue"),
+                               "Press [Enter] to continue (this is the only option in the list)"),
                              collapse = "\n"))
   prompt_msg <- sprintf(prompt_msg, update_type, prompt_options)
   lib <- "/Library/Frameworks/R.framework/Versions/%.1f/Resources/library"

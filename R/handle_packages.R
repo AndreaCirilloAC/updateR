@@ -41,17 +41,17 @@ restore_packages <- function(status = latest_r_version()) {
   choice <- as.numeric(readline(prompt_msg))
 
   # handling options
-  while(!choice %in% c(1, 2, "")) {
+  while(!choice %in% c(1, 2, "", NA)) {
     message("!Invalid option. Please try again\n")
     choice <- as.numeric(readline(prompt_msg))
   }
 
-  if(choice == 1) {
+  if(choice %in% 1) {
     # reinstall
     message("list of packages loaded")
     cat(sprintf("%s,", list_packages))
     install.packages(list_packages)
-  } else if(update_type == "minor" & choice == 2) {
+  } else if(update_type == "minor" & choice %in% 2) {
     # copy
     old <- sprintf(lib, floor(min(versions_numeric)) / 10)
     new <- sprintf(lib, floor(max(versions_numeric)) / 10)

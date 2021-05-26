@@ -74,6 +74,7 @@ restore_packages <- function(status = latest_r_version()) {
       ))
       system(sprintf("mkdir -p %s", new_lib_path))
       system(sprintf("cp -R %s/ %s/", old_lib_path, new_lib_path))
+      replace_libpath_profile(old_lib_path, new_lib_path)
     }
 
     message("Complete.")

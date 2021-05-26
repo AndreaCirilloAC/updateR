@@ -89,3 +89,32 @@ check_auto <- function(r_prof = NULL) {
                 message("Updated ~/.Rprofile")
         }
 }
+
+#' @noRd
+replace_libpath_profile <- function(old_path, new_path) {
+
+  filenames <- list.files("~/", all.files = TRUE)
+  exists_rprofile <- ".Rprofile" %in% filenames
+  f <- "~/.Rprofile"
+
+  if (!exists_rprofile) {
+    rprofile <- character(0)
+  } else {
+    rprofile <- readLines(f)
+  }
+  if (length(rprofile) == 0) {
+    rprofile <- ""
+  }
+
+  exists_line <- any(grepl(old_path, rprofile))
+  if (!exists_line) {
+    rprofile <- append(sprintf(".libPaths('%s')", new_path), rprofile)
+    message(sprintf("Added %s to ~/.Rprofile", new_path))
+  } else {
+    rprofile <- str_replace(rprofile, old_path, new_path)
+    message(sprintf("Replaced %s with %s ~/.Rprofile", old_path, new_path))
+  }
+
+  writeLines(rprofile, f)
+
+}

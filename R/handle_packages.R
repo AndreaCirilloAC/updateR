@@ -57,8 +57,8 @@ restore_packages <- function(status = latest_r_version()) {
   if(choice %in% 1) {
     # reinstall
     message("list of packages loaded")
-    cat(sprintf("%s,", list_packages))
-    install.packages(list_packages)
+    cat(sprintf("%s,", list_packages()))
+    install.packages(list_packages())
   } else if (update_type == "minor" & choice %in% 2) {
     # copy
 

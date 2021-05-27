@@ -15,7 +15,8 @@ Imports:
     dplyr,
     rvest,
     xml2,
-    magrittr
+    magrittr,
+    stringr
 Depends:
     R (>= 3.2.3)
 RoxygenNote: 7.1.1
